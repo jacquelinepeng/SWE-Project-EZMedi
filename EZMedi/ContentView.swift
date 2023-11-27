@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        Text("Wecome to EZMedi! ")
+        Text("Wecome to EZMedi! !!")
             .padding()
         
     }
