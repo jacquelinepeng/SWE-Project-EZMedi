@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+
+        HStack{
+            Text("EZMedi")
+        }
         
         Text("你好")
             .padding()
