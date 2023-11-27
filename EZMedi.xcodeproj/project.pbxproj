@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8B10144B2B14F4B40015BB2A /* EZMediApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10144A2B14F4B40015BB2A /* EZMediApp.swift */; };
-		8B10144D2B14F4B40015BB2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10144C2B14F4B40015BB2A /* ContentView.swift */; };
+		8B10144D2B14F4B40015BB2A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10144C2B14F4B40015BB2A /* SearchView.swift */; };
 		8B10144F2B14F4B70015BB2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B10144E2B14F4B70015BB2A /* Assets.xcassets */; };
 		8B1014522B14F4B70015BB2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1014512B14F4B70015BB2A /* Preview Assets.xcassets */; };
 		8B10145D2B14F4B80015BB2A /* EZMediTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10145C2B14F4B80015BB2A /* EZMediTests.swift */; };
 		8B1014682B14F4B80015BB2A /* EZMediUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1014672B14F4B80015BB2A /* EZMediUITests.swift */; };
+		B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF735E2B1CEA7B0090E74B /* MainView.swift */; };
+		B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF73622B1CEC780090E74B /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,7 @@
 /* Begin PBXFileReference section */
 		8B1014472B14F4B40015BB2A /* EZMedi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZMedi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B10144A2B14F4B40015BB2A /* EZMediApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZMediApp.swift; sourceTree = "<group>"; };
-		8B10144C2B14F4B40015BB2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8B10144C2B14F4B40015BB2A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8B10144E2B14F4B70015BB2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1014512B14F4B70015BB2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B1014532B14F4B70015BB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		8B1014632B14F4B80015BB2A /* EZMediUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZMediUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1014672B14F4B80015BB2A /* EZMediUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZMediUITests.swift; sourceTree = "<group>"; };
 		8B1014692B14F4B80015BB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4AF735E2B1CEA7B0090E74B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B4AF73622B1CEC780090E74B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				8B10144A2B14F4B40015BB2A /* EZMediApp.swift */,
-				8B10144C2B14F4B40015BB2A /* ContentView.swift */,
+				8B10144C2B14F4B40015BB2A /* SearchView.swift */,
+				B4AF735E2B1CEA7B0090E74B /* MainView.swift */,
+				B4AF73622B1CEC780090E74B /* ProfileView.swift */,
 				8B10144E2B14F4B70015BB2A /* Assets.xcassets */,
 				8B1014532B14F4B70015BB2A /* Info.plist */,
 				8B1014502B14F4B70015BB2A /* Preview Content */,
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B10144D2B14F4B40015BB2A /* ContentView.swift in Sources */,
+				B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */,
+				8B10144D2B14F4B40015BB2A /* SearchView.swift in Sources */,
+				B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */,
 				8B10144B2B14F4B40015BB2A /* EZMediApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
