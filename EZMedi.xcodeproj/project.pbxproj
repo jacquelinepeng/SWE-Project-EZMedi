@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B10144B2B14F4B40015BB2A /* EZMediApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10144A2B14F4B40015BB2A /* EZMediApp.swift */; };
+		8B10144D2B14F4B40015BB2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10144C2B14F4B40015BB2A /* ContentView.swift */; };
+		8B10144F2B14F4B70015BB2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B10144E2B14F4B70015BB2A /* Assets.xcassets */; };
+		8B1014522B14F4B70015BB2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1014512B14F4B70015BB2A /* Preview Assets.xcassets */; };
+		8B10145D2B14F4B80015BB2A /* EZMediTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10145C2B14F4B80015BB2A /* EZMediTests.swift */; };
+		8B1014682B14F4B80015BB2A /* EZMediUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1014672B14F4B80015BB2A /* EZMediUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B1014592B14F4B80015BB2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B10143F2B14F4B30015BB2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B1014462B14F4B40015BB2A;
+			remoteInfo = EZMedi;
+		};
+		8B1014642B14F4B80015BB2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B10143F2B14F4B30015BB2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B1014462B14F4B40015BB2A;
+			remoteInfo = EZMedi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8B1014472B14F4B40015BB2A /* EZMedi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZMedi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B10144A2B14F4B40015BB2A /* EZMediApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZMediApp.swift; sourceTree = "<group>"; };
+		8B10144C2B14F4B40015BB2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8B10144E2B14F4B70015BB2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B1014512B14F4B70015BB2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B1014532B14F4B70015BB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B1014582B14F4B80015BB2A /* EZMediTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZMediTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B10145C2B14F4B80015BB2A /* EZMediTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZMediTests.swift; sourceTree = "<group>"; };
+		8B10145E2B14F4B80015BB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B1014632B14F4B80015BB2A /* EZMediUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZMediUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B1014672B14F4B80015BB2A /* EZMediUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZMediUITests.swift; sourceTree = "<group>"; };
+		8B1014692B14F4B80015BB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B1014442B14F4B40015BB2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1014552B14F4B80015BB2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1014602B14F4B80015BB2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B10143E2B14F4B30015BB2A = {
+			isa = PBXGroup;
+			children = (
+				8B1014492B14F4B40015BB2A /* EZMedi */,
+				8B10145B2B14F4B80015BB2A /* EZMediTests */,
+				8B1014662B14F4B80015BB2A /* EZMediUITests */,
+				8B1014482B14F4B40015BB2A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8B1014482B14F4B40015BB2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B1014472B14F4B40015BB2A /* EZMedi.app */,
+				8B1014582B14F4B80015BB2A /* EZMediTests.xctest */,
+				8B1014632B14F4B80015BB2A /* EZMediUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B1014492B14F4B40015BB2A /* EZMedi */ = {
+			isa = PBXGroup;
+			children = (
+				8B10144A2B14F4B40015BB2A /* EZMediApp.swift */,
+				8B10144C2B14F4B40015BB2A /* ContentView.swift */,
+				8B10144E2B14F4B70015BB2A /* Assets.xcassets */,
+				8B1014532B14F4B70015BB2A /* Info.plist */,
+				8B1014502B14F4B70015BB2A /* Preview Content */,
+			);
+			path = EZMedi;
+			sourceTree = "<group>";
+		};
+		8B1014502B14F4B70015BB2A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8B1014512B14F4B70015BB2A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B10145B2B14F4B80015BB2A /* EZMediTests */ = {
+			isa = PBXGroup;
+			children = (
+				8B10145C2B14F4B80015BB2A /* EZMediTests.swift */,
+				8B10145E2B14F4B80015BB2A /* Info.plist */,
+			);
+			path = EZMediTests;
+			sourceTree = "<group>";
+		};
+		8B1014662B14F4B80015BB2A /* EZMediUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8B1014672B14F4B80015BB2A /* EZMediUITests.swift */,
+				8B1014692B14F4B80015BB2A /* Info.plist */,
+			);
+			path = EZMediUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B1014462B14F4B40015BB2A /* EZMedi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B10146C2B14F4B80015BB2A /* Build configuration list for PBXNativeTarget "EZMedi" */;
+			buildPhases = (
+				8B1014432B14F4B40015BB2A /* Sources */,
+				8B1014442B14F4B40015BB2A /* Frameworks */,
+				8B1014452B14F4B40015BB2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EZMedi;
+			productName = EZMedi;
+			productReference = 8B1014472B14F4B40015BB2A /* EZMedi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B1014572B14F4B80015BB2A /* EZMediTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B10146F2B14F4B80015BB2A /* Build configuration list for PBXNativeTarget "EZMediTests" */;
+			buildPhases = (
+				8B1014542B14F4B80015BB2A /* Sources */,
+				8B1014552B14F4B80015BB2A /* Frameworks */,
+				8B1014562B14F4B80015BB2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B10145A2B14F4B80015BB2A /* PBXTargetDependency */,
+			);
+			name = EZMediTests;
+			productName = EZMediTests;
+			productReference = 8B1014582B14F4B80015BB2A /* EZMediTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8B1014622B14F4B80015BB2A /* EZMediUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B1014722B14F4B80015BB2A /* Build configuration list for PBXNativeTarget "EZMediUITests" */;
+			buildPhases = (
+				8B10145F2B14F4B80015BB2A /* Sources */,
+				8B1014602B14F4B80015BB2A /* Frameworks */,
+				8B1014612B14F4B80015BB2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B1014652B14F4B80015BB2A /* PBXTargetDependency */,
+			);
+			name = EZMediUITests;
+			productName = EZMediUITests;
+			productReference = 8B1014632B14F4B80015BB2A /* EZMediUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B10143F2B14F4B30015BB2A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					8B1014462B14F4B40015BB2A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					8B1014572B14F4B80015BB2A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 8B1014462B14F4B40015BB2A;
+					};
+					8B1014622B14F4B80015BB2A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 8B1014462B14F4B40015BB2A;
+					};
+				};
+			};
+			buildConfigurationList = 8B1014422B14F4B30015BB2A /* Build configuration list for PBXProject "EZMedi" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B10143E2B14F4B30015BB2A;
+			productRefGroup = 8B1014482B14F4B40015BB2A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B1014462B14F4B40015BB2A /* EZMedi */,
+				8B1014572B14F4B80015BB2A /* EZMediTests */,
+				8B1014622B14F4B80015BB2A /* EZMediUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B1014452B14F4B40015BB2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B1014522B14F4B70015BB2A /* Preview Assets.xcassets in Resources */,
+				8B10144F2B14F4B70015BB2A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1014562B14F4B80015BB2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1014612B14F4B80015BB2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B1014432B14F4B40015BB2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B10144D2B14F4B40015BB2A /* ContentView.swift in Sources */,
+				8B10144B2B14F4B40015BB2A /* EZMediApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1014542B14F4B80015BB2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B10145D2B14F4B80015BB2A /* EZMediTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B10145F2B14F4B80015BB2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B1014682B14F4B80015BB2A /* EZMediUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B10145A2B14F4B80015BB2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B1014462B14F4B40015BB2A /* EZMedi */;
+			targetProxy = 8B1014592B14F4B80015BB2A /* PBXContainerItemProxy */;
+		};
+		8B1014652B14F4B80015BB2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B1014462B14F4B40015BB2A /* EZMedi */;
+			targetProxy = 8B1014642B14F4B80015BB2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8B10146A2B14F4B80015BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8B10146B2B14F4B80015BB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B10146D2B14F4B80015BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"EZMedi/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EZMedi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SWE4.EZMedi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B10146E2B14F4B80015BB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"EZMedi/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EZMedi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SWE4.EZMedi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8B1014702B14F4B80015BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EZMediTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SWE4.EZMediTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EZMedi.app/EZMedi";
+			};
+			name = Debug;
+		};
+		8B1014712B14F4B80015BB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EZMediTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SWE4.EZMediTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EZMedi.app/EZMedi";
+			};
+			name = Release;
+		};
+		8B1014732B14F4B80015BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EZMediUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SWE4.EZMediUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EZMedi;
+			};
+			name = Debug;
+		};
+		8B1014742B14F4B80015BB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EZMediUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SWE4.EZMediUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EZMedi;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B1014422B14F4B30015BB2A /* Build configuration list for PBXProject "EZMedi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B10146A2B14F4B80015BB2A /* Debug */,
+				8B10146B2B14F4B80015BB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B10146C2B14F4B80015BB2A /* Build configuration list for PBXNativeTarget "EZMedi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B10146D2B14F4B80015BB2A /* Debug */,
+				8B10146E2B14F4B80015BB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B10146F2B14F4B80015BB2A /* Build configuration list for PBXNativeTarget "EZMediTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B1014702B14F4B80015BB2A /* Debug */,
+				8B1014712B14F4B80015BB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B1014722B14F4B80015BB2A /* Build configuration list for PBXNativeTarget "EZMediUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B1014732B14F4B80015BB2A /* Debug */,
+				8B1014742B14F4B80015BB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B10143F2B14F4B30015BB2A /* Project object */;
+}
