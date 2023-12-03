@@ -15,6 +15,7 @@
 		8B1014682B14F4B80015BB2A /* EZMediUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1014672B14F4B80015BB2A /* EZMediUITests.swift */; };
 		B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF735E2B1CEA7B0090E74B /* MainView.swift */; };
 		B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF73622B1CEC780090E74B /* ProfileView.swift */; };
+		E143B8A32B1D123F00A837E5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8B1014692B14F4B80015BB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4AF735E2B1CEA7B0090E74B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B4AF73622B1CEC780090E74B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				8B10144A2B14F4B40015BB2A /* EZMediApp.swift */,
 				8B10144C2B14F4B40015BB2A /* SearchView.swift */,
+				E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */,
 				B4AF735E2B1CEA7B0090E74B /* MainView.swift */,
 				B4AF73622B1CEC780090E74B /* ProfileView.swift */,
 				8B10144E2B14F4B70015BB2A /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 			files = (
 				B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */,
 				8B10144D2B14F4B40015BB2A /* SearchView.swift in Sources */,
+				E143B8A32B1D123F00A837E5 /* SplashScreenView.swift in Sources */,
 				B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */,
 				8B10144B2B14F4B40015BB2A /* EZMediApp.swift in Sources */,
 			);
