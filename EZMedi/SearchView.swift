@@ -1,21 +1,124 @@
 import SwiftUI
 
-// Search Bar View
+struct Medicine: Identifiable {
+    let id: Int
+    let name: String
+    let details: String
+}
+
 struct SearchBar: View {
     @Binding var text: String
+    @Binding var isEditing: Bool
 
     var body: some View {
-        
-        //search bar
         HStack{
-            TextField("Enter medicine name", text: $text).foregroundColor(.black)
+            TextField("Enter medicine name", text: $text)
+                .foregroundColor(.black)
                 .padding()
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .padding(.leading, 35)
-            Image(systemName: "magnifyingglass").font(.system(size: 25))
-                .foregroundColor(Color(hex: "#2D9596")).padding().padding(.trailing, 20)
+            Image(systemName: "magnifyingglass").font(.system(size: 25)).foregroundColor(Color(hex: "#2D9596")).padding().padding(.trailing, 20)
+                }
+
+    }
+}
+
+struct MedicineDetailView: View {
+    let medicine: Medicine
+
+    var body: some View {
+        Text(medicine.details)
+            .navigationBarTitle(medicine.name, displayMode: .inline)
+    }
+}
+
+struct SearchView: View {
+    @State private var searchText = ""
+    @State private var isScannerPresented = false
+    @State private var scannedCode: String?
+    @State private var isSearchActive = false
+
+    let medicines = [
+        Medicine(id: 1, name: "Aspirin", details: "Used to reduce pain, fever, or inflammation."),
+        Medicine(id: 2, name: "Ibuprofen", details: "It's used for pain relief and reducing inflammation."),
+        // Add more medicines
+    ]
+
+    var filteredMedicines: [Medicine] {
+        if searchText.isEmpty {
+            return medicines
+        } else {
+            return medicines.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         }
+    }
+
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color(hex: "#E7EDEB")
+                    .edgesIgnoringSafeArea(.all)
+
+                VStack {
+                    if isSearchActive || !searchText.isEmpty {
+                        SearchBar(text: $searchText, isEditing: $isSearchActive)
+                            .padding(.top)
+
+                        Button("Cancel") {
+                            searchText = ""
+                            isSearchActive = false
+                            hideKeyboard()
+                        }.foregroundColor(Color(hex: "#2D9596")).padding(.bottom)
+
+                        List(filteredMedicines, id: \.id) { medicine in
+                            NavigationLink(destination: MedicineDetailView(medicine: medicine)) {
+                                Text(medicine.name)
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .listStyle(PlainListStyle())
+                        .background(Color(hex: "#E7EDEB"))
+                    } else {
+                        Spacer()
+
+                        SearchBar(text: $searchText, isEditing: $isSearchActive)
+                            .padding(.bottom, 120)
+                            .animation(.easeInOut)
+
+                        Text("Scan")
+                            .font(.headline)
+                            .foregroundColor(Color(hex: "#2D9596"))
+                            .padding(.bottom, 1)
+
+                        Button(action: {
+                            isScannerPresented = true
+                        }) {
+                            Image(systemName: "camera.metering.none")
+                                .font(.system(size: 90))
+                                .foregroundColor(Color(hex: "#2D9596"))
+                        }
+                        .sheet(isPresented: $isScannerPresented) {
+                            BarcodeScannerView(isPresented: $isScannerPresented, scannedCode: $scannedCode)
+                        }
+
+                        if let scannedCode = scannedCode {
+                            Text("Scanned: \(scannedCode)")
+                                .padding(.top)
+                                .foregroundColor(Color(hex: "#2D9596"))
+                        }
+
+                        Spacer()
+                    }
+                }
+            }
+            .navigationBarTitle("EZMedi", displayMode: .inline)
+            .navigationBarColor(backgroundColor: UIColor(hex: "#2D9596"))
+            .modifier(NavigationBarModifier(backgroundColor: UIColor(hex: "#2D9596")))
+        }
+    }
+
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
@@ -45,45 +148,6 @@ struct NavigationBarModifier: ViewModifier {
 extension View {
     func navigationBarColor(backgroundColor: UIColor) -> some View {
         self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
-    }
-}
-
-// Main SearchView
-struct SearchView: View {
-    @State private var searchText = ""
-
-    var body: some View {
-        NavigationView {
-            GeometryReader { geometry in
-                ZStack {
-                    Color(hex: "#E7EDEB") // Background color for the whole page
-                        .edgesIgnoringSafeArea(.all)
-                    
-                    VStack (spacing: 5){
-                        Spacer()
-
-                        SearchBar(text: $searchText).padding(.bottom, 120)
-
-                        Text("Scan")
-                            .font(.headline)
-                            .foregroundColor(Color(hex: "#2D9596")).padding(.bottom, 1)
-
-                        Button(action: {
-                            // Action for Camera Button
-                        }) {
-                            Image(systemName: "camera.metering.none") // Camera icon
-                                .font(.system(size: 90))
-                                .foregroundColor(Color(hex: "#2D9596"))
-                        }
-
-                        Spacer()
-                    }
-                }
-                .navigationBarTitle("EZMedi", displayMode: .inline).foregroundColor(.white)
-                .navigationBarColor(backgroundColor: UIColor(hex: "#2D9596"))
-                .modifier(NavigationBarModifier(backgroundColor: UIColor(hex: "#2D9596"))) // Applying the modifier
-            }
-        }
     }
 }
 
