@@ -48,10 +48,3 @@ struct User {
     var email: String
     var medicineLibrary: [Medicine]
 }
-
-struct User {
-    var name: String
-    var email: String
-    var medicineLibrary: [Medicine]
-}
-
