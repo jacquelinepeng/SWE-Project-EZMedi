@@ -19,6 +19,7 @@
 		B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF73622B1CEC780090E74B /* ProfileView.swift */; };
 		B4D03F262B1E3C7C0025281D /* MedicineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D03F252B1E3C7C0025281D /* MedicineDetailView.swift */; };
 		B4D03F2A2B1E41950025281D /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D03F292B1E41950025281D /* ReminderView.swift */; };
+		B4DAF4AA2B1E8AFE00C7981A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF4A92B1E8AFE00C7981A /* FireBaseManager.swift */; };
 		E143B8A32B1D123F00A837E5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		B4AF73622B1CEC780090E74B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B4D03F252B1E3C7C0025281D /* MedicineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDetailView.swift; sourceTree = "<group>"; };
 		B4D03F292B1E41950025281D /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReminderView.swift; path = ../ReminderView.swift; sourceTree = "<group>"; };
+		B4DAF4A92B1E8AFE00C7981A /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				8B10144E2B14F4B70015BB2A /* Assets.xcassets */,
 				8B1014532B14F4B70015BB2A /* Info.plist */,
 				8B1014502B14F4B70015BB2A /* Preview Content */,
+				B4DAF4A92B1E8AFE00C7981A /* FireBaseManager.swift */,
 			);
 			path = EZMedi;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				B45B10122B1DF6B7009F76BA /* LoginView.swift in Sources */,
 				B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */,
 				8B10144D2B14F4B40015BB2A /* SearchView.swift in Sources */,
+				B4DAF4AA2B1E8AFE00C7981A /* FireBaseManager.swift in Sources */,
 				E143B8A32B1D123F00A837E5 /* SplashScreenView.swift in Sources */,
 				B4D03F2A2B1E41950025281D /* ReminderView.swift in Sources */,
 				B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */,
