@@ -2,17 +2,24 @@
 //  FireBaseManager.swift
 //  EZMedi
 //
-//  Created by Jiangweilin Peng on 12/5/23.
+//  Created by Jiangweilin Peng on 12/4/23.
 //
 
-import SwiftUI
+import Foundation
+import Firebase
 
-struct FireBaseManager: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class FirebaseManager: NSObject{
+    
+    let auth: Auth
+    let firestore: Firestore
+    
+    static let shared = FirebaseManager()
+    override init(){
+        FirebaseApp.configure()
+        
+        self.auth = Auth.auth()
+        self.firestore = Firestore.firestore()
+        
+        super.init()
     }
-}
-
-#Preview {
-    FireBaseManager()
 }
