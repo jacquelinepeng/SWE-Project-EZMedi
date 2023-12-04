@@ -43,7 +43,7 @@ struct MedicineDetailView: View {
                 Image(systemName: "arrow.left") // Custom Back Icon
                 Text("EZMedi") // Custom Text
             }
-            .foregroundColor(Color(hex: "FFFFFF")) // Custom Color
+            .foregroundColor(Color(hex: "9AD0C2")) // Custom Color
         })
         .navigationBarTitle(medicine.name, displayMode: .inline)
     }
