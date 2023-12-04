@@ -17,6 +17,7 @@
 		B45B10122B1DF6B7009F76BA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B10112B1DF6B7009F76BA /* LoginView.swift */; };
 		B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF735E2B1CEA7B0090E74B /* MainView.swift */; };
 		B4AF73632B1CEC780090E74B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF73622B1CEC780090E74B /* ProfileView.swift */; };
+		B4D03F262B1E3C7C0025281D /* MedicineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D03F252B1E3C7C0025281D /* MedicineDetailView.swift */; };
 		E143B8A32B1D123F00A837E5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		B45B10112B1DF6B7009F76BA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B4AF735E2B1CEA7B0090E74B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B4AF73622B1CEC780090E74B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B4D03F252B1E3C7C0025281D /* MedicineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDetailView.swift; sourceTree = "<group>"; };
 		E143B8A22B1D123F00A837E5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				B45B10112B1DF6B7009F76BA /* LoginView.swift */,
 				8B10144E2B14F4B70015BB2A /* Assets.xcassets */,
 				8B1014532B14F4B70015BB2A /* Info.plist */,
+				B4D03F252B1E3C7C0025281D /* MedicineDetailView.swift */,
 				8B1014502B14F4B70015BB2A /* Preview Content */,
 			);
 			path = EZMedi;
@@ -281,6 +284,7 @@
 				E143B8A32B1D123F00A837E5 /* SplashScreenView.swift in Sources */,
 				B4AF735F2B1CEA7B0090E74B /* MainView.swift in Sources */,
 				8B10144B2B14F4B40015BB2A /* EZMediApp.swift in Sources */,
+				B4D03F262B1E3C7C0025281D /* MedicineDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
