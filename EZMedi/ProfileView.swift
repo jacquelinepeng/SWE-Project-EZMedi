@@ -12,27 +12,27 @@ struct ProfileView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                // User Information Section
-                Section(header: Text("User Information")) {
-                    Text("Name: \(user.name)")
-                    Text("Email: \(user.email)")
-                }
+            ZStack {
+                // Set the background color for the entire view
+                Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
 
-                // Medicine Library Section
-                Section(header: Text("Medicine Library")) {
-                    ForEach(user.medicineLibrary, id: \.id) { medicine in
-                        HStack {
+                // The List with clear background
+                List {
+                    Section(header: Text("User Information").font(.headline).foregroundColor((Color(hex:"2D9596")))) {
+                        Text("Name: \(user.name)")
+                        Text("Email: \(user.email)")
+                    }
+
+                    Section(header: Text("Medicine Library").font(.headline).foregroundColor((Color(hex:"2D9596")))) {
+                        ForEach(user.medicineLibrary, id: \.id) { medicine in
                             Text(medicine.name)
-                            Spacer()
-                            Button("Set Reminder") {
-                                // Implement reminder action here
-                            }
-                            .foregroundColor(.blue)
+                        }.onDelete(perform: deleteMedicine)
+                        
+                        if user.medicineLibrary.isEmpty {
+                            Text("Add Medicine Here").foregroundColor(.gray)
                         }
                     }
-                    .onDelete(perform: deleteMedicine)
-                }
+                }.listStyle(.plain)
             }
             .navigationBarTitle("Profile", displayMode: .large)
         }
@@ -43,6 +43,8 @@ struct ProfileView: View {
     }
 }
 
+
+//User Class
 struct User {
     var name: String
     var email: String
