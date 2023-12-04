@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @Binding var user: User
-    
+    @State private var showReminderView = false
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -36,13 +37,13 @@ struct ProfileView: View {
                                     Text(medicine.name)
                                     Spacer()
                                     Button(action: {
-                                        //set reminder
+                                        showReminderView = true
                                     }, label: {
-                                        Text("Set Reminder").foregroundColor(Color(hex:"2D9596"))
+                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596"))
                                     })
                                 }
-                            }
-                            .onDelete(perform: deleteMedicine)
+                            }.onDelete(perform: deleteMedicine)
+                                .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
                         }
                     }
                 }
