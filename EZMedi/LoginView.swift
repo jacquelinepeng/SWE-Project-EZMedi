@@ -52,7 +52,7 @@ struct LoginPage: View {
                     HStack{
                         Text("Don't have an account? ")
                             .foregroundColor(.black)
-                        Text("Register")
+                        Text("Sign up")
                             .foregroundColor(Color(hex:"2D9596"))
                     }
                 }

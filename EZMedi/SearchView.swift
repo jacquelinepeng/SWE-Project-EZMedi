@@ -26,10 +26,20 @@ struct SearchBar: View {
 
 struct MedicineDetailView: View {
     let medicine: Medicine
+    @Binding var user: User // Bind the user object
 
     var body: some View {
-        Text(medicine.details)
-            .navigationBarTitle(medicine.name, displayMode: .inline)
+        VStack {
+            Text(medicine.details)
+            Button("Add to My Library") {
+                user.medicineLibrary.append(medicine)
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(8)
+        }
+        .navigationBarTitle(medicine.name, displayMode: .inline)
     }
 }
 

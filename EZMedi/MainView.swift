@@ -40,7 +40,7 @@ struct CustomTabBarView: UIViewControllerRepresentable {
         let searchVC = UIHostingController(rootView: SearchView())
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
 
-        let profileVC = UIHostingController(rootView: ProfileView())
+        let profileVC = UIHostingController(rootView: ProfileView(user: User))
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
 
         customTabBarController.viewControllers = [searchVC, profileVC]
