@@ -33,14 +33,15 @@ class CustomTabBarController: UITabBarController {
 }
 
 struct CustomTabBarView: UIViewControllerRepresentable {
+    @State private var user = User(name: "Sample User", email: "sample@email.com", medicineLibrary: [])
+
     func makeUIViewController(context: Context) -> UIViewController {
         let customTabBarController = CustomTabBarController()
 
-        // Set up your view controllers here
-        let searchVC = UIHostingController(rootView: SearchView())
+        let searchVC = UIHostingController(rootView: SearchView(user: $user))
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
 
-        let profileVC = UIHostingController(rootView: ProfileView())
+        let profileVC = UIHostingController(rootView: ProfileView(user: $user))
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
 
         customTabBarController.viewControllers = [searchVC, profileVC]
@@ -48,9 +49,9 @@ struct CustomTabBarView: UIViewControllerRepresentable {
         return customTabBarController
     }
 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-    }
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
