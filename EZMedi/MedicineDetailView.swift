@@ -14,28 +14,37 @@ struct Medicine: Identifiable {
 }
 
 struct MedicineDetailView: View {
+    @Environment(\.presentationMode) var presentationMode
     let medicine: Medicine
     @Binding var user: User
 
     var body: some View {
         ZStack {
-            // Set the background color for the entire view
             Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
 
             VStack {
-                Text(medicine.details)
-                    .foregroundColor(Color(hex: "265073"))
-                
+                Text(medicine.details).foregroundColor(Color(hex: "2D9596"))
+
                 Button("Add to My Library") {
                     user.medicineLibrary.append(medicine)
                 }
                 .padding()
-                .background(Color(hex: "265073"))
+                .background(Color(hex: "2D9596"))
                 .foregroundColor(.white)
                 .cornerRadius(8)
             }
-            .padding() // Add some padding around the VStack content
+            .padding()
         }
+        .navigationBarBackButtonHidden(true) // Hide the default back button
+        .navigationBarItems(leading: Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "arrow.left") // Custom Back Icon
+                Text("EZMedi") // Custom Text
+            }
+            .foregroundColor(Color(hex: "FFFFFF")) // Custom Color
+        })
         .navigationBarTitle(medicine.name, displayMode: .inline)
     }
 }
