@@ -29,19 +29,28 @@ struct MedicineDetailView: View {
     @Binding var user: User
 
     var body: some View {
-        VStack {
-            Text(medicine.details)
-            Button("Add to My Library") {
-                user.medicineLibrary.append(medicine)
+        ZStack {
+            // Set the background color for the entire view
+            Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
+
+            VStack {
+                Text(medicine.details)
+                    .foregroundColor(Color(hex: "265073"))
+                
+                Button("Add to My Library") {
+                    user.medicineLibrary.append(medicine)
+                }
+                .padding()
+                .background(Color(hex: "265073"))
+                .foregroundColor(.white)
+                .cornerRadius(8)
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(8)
+            .padding() // Add some padding around the VStack content
         }
         .navigationBarTitle(medicine.name, displayMode: .inline)
     }
 }
+
 
 struct SearchView: View {
     @State private var searchText = ""
@@ -67,20 +76,30 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "#E7EDEB")
-                    .edgesIgnoringSafeArea(.all)
+                Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
 
+                
                 VStack {
-                    if isSearchActive || !searchText.isEmpty {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        if isSearchActive || !searchText.isEmpty {
+                            Button(action: {
+                                searchText = ""
+                                isSearchActive = false
+                                hideKeyboard()
+                            }) {
+                                Image(systemName: "arrow.backward")
+                                    .foregroundColor(Color(hex: "#2D9596"))
+                            }
+                            .padding(.leading, 20)
+                        }
+
                         SearchBar(text: $searchText, isEditing: $isSearchActive)
-                            .padding(.top)
+                    }
+                    .padding(.vertical)
 
-                        Button("Cancel") {
-                            searchText = ""
-                            isSearchActive = false
-                            hideKeyboard()
-                        }.foregroundColor(Color(hex: "#2D9596")).padding(.bottom)
-
+                    if isSearchActive || !searchText.isEmpty {
                         List(filteredMedicines, id: \.id) { medicine in
                             NavigationLink(destination: MedicineDetailView(medicine: medicine, user: $user)) {
                                 Text(medicine.name)
@@ -92,15 +111,11 @@ struct SearchView: View {
                     } else {
                         Spacer()
 
-                        SearchBar(text: $searchText, isEditing: $isSearchActive)
-                            .padding(.bottom, 120)
-                            .animation(.easeInOut)
-
                         Text("Scan")
                             .font(.headline)
                             .foregroundColor(Color(hex: "#2D9596"))
                             .padding(.bottom, 1)
-
+                        
                         Button(action: {
                             isScannerPresented = true
                         }) {
@@ -132,6 +147,7 @@ struct SearchView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
 
 // ViewModifier for the Navigation Bar
 struct NavigationBarModifier: ViewModifier {
