@@ -26,7 +26,7 @@ struct SearchBar: View {
 
 struct MedicineDetailView: View {
     let medicine: Medicine
-    @Binding var user: User // Bind the user object
+    @Binding var user: User
 
     var body: some View {
         VStack {
@@ -48,6 +48,7 @@ struct SearchView: View {
     @State private var isScannerPresented = false
     @State private var scannedCode: String?
     @State private var isSearchActive = false
+    @Binding var user: User
 
     let medicines = [
         Medicine(id: 1, name: "Aspirin", details: "Used to reduce pain, fever, or inflammation."),
@@ -81,7 +82,7 @@ struct SearchView: View {
                         }.foregroundColor(Color(hex: "#2D9596")).padding(.bottom)
 
                         List(filteredMedicines, id: \.id) { medicine in
-                            NavigationLink(destination: MedicineDetailView(medicine: medicine)) {
+                            NavigationLink(destination: MedicineDetailView(medicine: medicine, user: $user)) {
                                 Text(medicine.name)
                                     .foregroundColor(.black)
                             }
@@ -158,13 +159,6 @@ struct NavigationBarModifier: ViewModifier {
 extension View {
     func navigationBarColor(backgroundColor: UIColor) -> some View {
         self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
-    }
-}
-
-// Preview provider for SwiftUI previews
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
     }
 }
 

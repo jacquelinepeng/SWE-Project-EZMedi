@@ -42,3 +42,9 @@ struct ProfileView: View {
     }
 }
 
+struct User {
+    var name: String
+    var email: String
+    var medicineLibrary: [Medicine]
+}
+
