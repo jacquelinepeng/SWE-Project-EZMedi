@@ -32,8 +32,6 @@ class CustomTabBarController: UITabBarController {
     }
 }
 
-
-
 struct CustomTabBarView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let customTabBarController = CustomTabBarController()

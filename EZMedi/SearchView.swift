@@ -8,7 +8,7 @@ struct SearchBar: View {
         
         //search bar
         HStack{
-            TextField("Enter medicine name", text: $text)
+            TextField("Enter medicine name", text: $text).foregroundColor(.black)
                 .padding()
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
@@ -41,7 +41,6 @@ struct NavigationBarModifier: ViewModifier {
             }
     }
 }
-
 
 extension View {
     func navigationBarColor(backgroundColor: UIColor) -> some View {
