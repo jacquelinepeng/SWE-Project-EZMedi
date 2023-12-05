@@ -117,6 +117,12 @@ struct RegisterPage: View {
                 .foregroundColor(Color(hex:"2D9596"))
                 .padding(.bottom, 50)
             
+            TextField("User name", text: $username)
+                .padding()
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(5.0)
+                .padding(.bottom, 20)
+            
             TextField("Email address", text: $email)
                 .padding()
                 .background(Color(.secondarySystemBackground))
@@ -153,7 +159,7 @@ struct RegisterPage: View {
         .ignoresSafeArea()
     }
     private func handleAction(){
-        print("register")
+        print("Here start the register")
         createNewAccount()
     }
     
@@ -181,7 +187,7 @@ struct RegisterPage: View {
         
         print(uid,"this is uid")
         
-        let userData = ["email": self.email, "uid": uid]
+        let userData = ["email": self.email, "uid": uid, "username": self.username]
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).setData(userData){
                 err in

@@ -127,12 +127,12 @@
 				B4AF735E2B1CEA7B0090E74B /* MainView.swift */,
 				B4AF73622B1CEC780090E74B /* ProfileView.swift */,
 				B45B10112B1DF6B7009F76BA /* LoginView.swift */,
-				B4DAF4B22B1E8C6300C7981A /* GoogleService-Info.plist */,
+				B4DAF4A92B1E8AFE00C7981A /* FireBaseManager.swift */,
 				B4D03F252B1E3C7C0025281D /* MedicineDetailView.swift */,
+				B4DAF4B22B1E8C6300C7981A /* GoogleService-Info.plist */,
 				8B10144E2B14F4B70015BB2A /* Assets.xcassets */,
 				8B1014532B14F4B70015BB2A /* Info.plist */,
 				8B1014502B14F4B70015BB2A /* Preview Content */,
-				B4DAF4A92B1E8AFE00C7981A /* FireBaseManager.swift */,
 			);
 			path = EZMedi;
 			sourceTree = "<group>";

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct User_class {
-    let uid, email: String
+    let uid, email, username: String
     
 }
 
@@ -54,10 +54,12 @@ class ProfileViewModel: ObservableObject {
                 
                 let uid = data["uid"] as? String ?? ""
                 let email = data["email"] as? String ?? ""
+                let user_name = data["username"] as? String ?? ""
 //                let email_short = data["email"]
+                print(user_name,"this is the username")
                 
 //                self.user = User_class(uid: uid, email: email.replaceOccurrences(of: "@gmail.com", with: "") ?? "")
-                self.user = User_class(uid: uid, email: email)
+                self.user = User_class(uid: uid, email: email, username: user_name)
 
 //                self.errorMessage = user.uid
         }
@@ -80,7 +82,7 @@ struct ProfileView: View {
     @State private var shouldShowLogOutOptions = false
     
     @ObservedObject private var vm = ProfileViewModel()
-
+    
     var body: some View {
         
         NavigationView {
@@ -93,7 +95,7 @@ struct ProfileView: View {
                 List {
                     // User Information Section
                     Section(header: Text("User Information").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
-                        Text("Name: \(vm.user?.uid ?? "")")
+                        Text("Name: \(vm.user?.username ?? "")")
                         Text("Email: \(vm.user?.email ?? "")")
                     }
                     
@@ -122,28 +124,32 @@ struct ProfileView: View {
                 }
                 .listStyle(.plain)
                 
-                Button{
-                    shouldShowLogOutOptions.toggle()
-                } label: {
-                    Image(systemName: "gear")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 40, height: 40)
-                        .background(Color(hex:"2D9596"))
-                        .cornerRadius(25.0)
-                }
+                
                 
             }
             .navigationBarTitle("Profile", displayMode: .large)
+            
+            .navigationBarItems(trailing:
+                                    Button{
+                shouldShowLogOutOptions.toggle()
+            } label: {
+                Image(systemName: "gear")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 40, height: 40)
+                    .background(Color(hex:"2D9596"))
+                    .cornerRadius(25.0)
+            }
+            )
             .actionSheet(isPresented: $shouldShowLogOutOptions){
                 .init(title: Text("Settings"), message: Text("What do you want to do?"),
                       buttons: [ .destructive(Text("Sign out"), action:{
-                        print("Handle sign out")
-                        vm.handleSignOut()
-                    }),
-                    .cancel()
-                ])
+                    print("Handle sign out")
+                    vm.handleSignOut()
+                }),
+                                 .cancel()
+                               ])
             }
             .fullScreenCover(isPresented: $vm.isUserCurrentlyLoggedOut, onDismiss:nil){
                 LoginPage(didCompleteLoginProcess: {
@@ -153,14 +159,10 @@ struct ProfileView: View {
             }
         }
     }
-    
-    
     private func deleteMedicine(at offsets: IndexSet) {
         user.medicineLibrary.remove(atOffsets: offsets)
     }
 }
-
-
 
 
 //User Class

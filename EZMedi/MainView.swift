@@ -10,7 +10,11 @@ import UIKit
 
 struct MainView: View {
     var body: some View {
-        CustomTabBarView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            CustomTabBarView().edgesIgnoringSafeArea(.all)
+//                .navigationBarTitle("EZMedi", displayMode: .inline)
+                }
+            
     }
 }
 
@@ -45,12 +49,16 @@ struct CustomTabBarView: UIViewControllerRepresentable {
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
 
         customTabBarController.viewControllers = [searchVC, profileVC]
-
+        
         return customTabBarController
+
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
+
+//    .navigationBarColor(backgroundColor: UIColor(hex: "#2D9596"))
+//    .modifier(NavigationBarModifier(backgroundColor: UIColor(hex: "#2D9596")))
 
 
 struct MainView_Previews: PreviewProvider {
