@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-struct Medicine: Identifiable {
-    let id: Int
-    let name: String
-    let details: String
-}
+
 
 struct MedicineDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     let medicine: Medicine
-    @Binding var user: User
+    @ObservedObject private var vm = ProfileViewModel()
+//    @Binding var user: User
 
     var body: some View {
         ZStack {
@@ -26,7 +23,8 @@ struct MedicineDetailView: View {
                 Text(medicine.details).foregroundColor(Color(hex: "2D9596"))
 
                 Button("Add to My Library") {
-                    user.medicineLibrary.append(medicine)
+                    vm.user?.medicineLibrary.append(medicine)
+                    print(vm.user ?? ["test"])
                 }
                 .padding()
                 .background(Color(hex: "2D9596"))
@@ -35,16 +33,6 @@ struct MedicineDetailView: View {
             }
             .padding()
         }
-        .navigationBarBackButtonHidden(true) // Hide the default back button
-        .navigationBarItems(leading: Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(systemName: "arrow.left") // Custom Back Icon
-                Text("EZMedi") // Custom Text
-            }
-            .foregroundColor(Color(hex: "9AD0C2")) // Custom Color
-        })
         .navigationBarTitle(medicine.name, displayMode: .inline)
     }
 }

@@ -26,9 +26,8 @@ struct LoginPage: View {
                     .font(.system(size: 36))
                     .foregroundColor(Color(hex:"2D9596"))
                     .padding(.bottom, 50)
-        
 
-                TextField("Username", text: $email)
+                TextField("Email", text: $email)
                     .padding()
                     .background(Color(.secondarySystemBackground))
                     .cornerRadius(5.0)

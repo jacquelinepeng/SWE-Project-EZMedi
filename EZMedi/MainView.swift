@@ -19,6 +19,7 @@ struct MainView: View {
 }
 
 class CustomTabBarController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +38,7 @@ class CustomTabBarController: UITabBarController {
 }
 
 struct CustomTabBarView: UIViewControllerRepresentable {
+    @ObservedObject private var vm = ProfileViewModel()
     @State private var user = User(name: "Sample User", email: "sample@email.com", medicineLibrary: [])
 
     func makeUIViewController(context: Context) -> UIViewController {
@@ -45,7 +47,7 @@ struct CustomTabBarView: UIViewControllerRepresentable {
         let searchVC = UIHostingController(rootView: SearchView(user: $user))
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
 
-        let profileVC = UIHostingController(rootView: ProfileView(user: $user))
+        let profileVC = UIHostingController(rootView: ProfileView())
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
 
         customTabBarController.viewControllers = [searchVC, profileVC]
