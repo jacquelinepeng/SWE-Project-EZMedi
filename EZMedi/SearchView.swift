@@ -68,7 +68,7 @@ struct SearchView: View {
 
                     if isSearchActive || !searchText.isEmpty {
                         List(filteredMedicines, id: \.id) { medicine in
-                            NavigationLink(destination: MedicineDetailView(medicine: medicine, user: $user)) {
+                            NavigationLink(destination: MedicineDetailView(medicine: medicine)) {
                                 Text(medicine.name)
                                     .foregroundColor(.black)
                             }
