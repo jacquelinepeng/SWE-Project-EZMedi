@@ -10,46 +10,56 @@ import Foundation
 import UserNotifications
 
 struct ReminderView: View {
-    //The state of the toggle on/off for daily reminder
     @AppStorage("isOn") var isOn = false
-    // Save the notification time set by user for daily reminder
     @AppStorage("notificationTimeString") var notificationTimeString = ""
     
+    @State private var startDate = Date()
+    @State private var endDate = Date()
+    
+//    let dateRange: ClosedRange<Date> = {
+//        let calendar = Calendar.current
+//        let startComponents = DateComponents(year: 2020, month: 1, day: 1)
+//        let endComponents = DateComponents(year: 2050, month: 12, day: 31, hour: 23, minute: 59, second: 59)
+//        return calendar.date(from:startComponents)!
+//        ...
+//        calendar.date(from:endComponents)!
+//    }()
     var body: some View {
+        
         ZStack{
             //background color
             Color(hex:"E7EDEB").ignoresSafeArea()
             List {
-                Section(header: Text("Medicine Reminder")) {
-                    // The toggle for set up daily reminder
-                    Toggle("Daily Reminder", isOn: $isOn)
-                        .onChange(of: isOn) { isOn in
-                            handleIsOnChange(isOn: isOn)
-                        }
-                    // Show the date picker if the daily reminder feature is on
-                    if isOn {
-                        DatePicker("Notification Time", selection: Binding(
-                            get: {
-                                // Get the notification time schedule set by user
-                                DateHelper.dateFormatter.date(from: notificationTimeString) ?? Date()
-                            },
-                            set: {
-                                // On value set, change the notification time
-                                notificationTimeString = DateHelper.dateFormatter.string(from: $0)
-                                handleNotificationTimeChange()
-                            }
-                        // Only use hour and minute components, since this is a daily reminder
-                        ), displayedComponents: .hourAndMinute)
-                        // date picker
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
+                Toggle("Reminder", isOn: $isOn)
+                    .onChange(of: isOn) { isOn in
+                        handleIsOnChange(isOn: isOn)
                     }
+                // Show the date picker if the daily reminder feature is on
+                if isOn {
+                    
+                    DatePicker("Start Date", selection: $startDate, displayedComponents: [.date])
+                    DatePicker("End Date", selection: $endDate, displayedComponents: [.date])
+
+                    DatePicker("", selection: Binding(
+                        get: {
+                            // Get the notification time schedule set by user
+                            DateHelper.dateFormatter.date(from: notificationTimeString) ?? Date()
+                        },
+                        set: {
+                            // On value set, change the notification time
+                            notificationTimeString = DateHelper.dateFormatter.string(from: $0)
+                            handleNotificationTimeChange()
+                        }
+                    ), displayedComponents: .hourAndMinute)
+                    // date picker
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
                 }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            .listStyle(PlainListStyle())
+//            .listStyle(PlainListStyle())
             .background(Color(hex: "#E7EDEB"))
 
         }
@@ -60,7 +70,8 @@ private extension ReminderView {
     
     // Handle if the user turned on/off the daily reminder feature
     private func handleIsOnChange(isOn: Bool) {
-        if isOn {
+        let currentDate = Date()
+        if isOn && (currentDate <= endDate){ //自动switch off reminder if the endDate is reached 不一定能用
             NotificationManager.requestNotificationAuthorization()
             NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString)
         } else {
@@ -87,19 +98,18 @@ struct NotificationManager {
             }
         }
     }
-    
+                
     // Schedule daily notification at selected time
     static func scheduleNotification(notificationTimeString: String) {
-        // Convert the time in string to date
+        // Convert the time from string to date
         guard let date = DateHelper.dateFormatter.date(from: notificationTimeString) else {
             return
         }
-        
-        // Instantiate a variable for UNMutableNotificationContent
+    
         let content = UNMutableNotificationContent()
-        // The notification title
+        // Notification title
         content.title = "It's time."
-        // The notification body
+        // Notification body content
         content.body = "Take your medicine."
         content.sound = .default
         

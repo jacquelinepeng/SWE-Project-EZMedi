@@ -114,28 +114,25 @@ struct ProfileView: View {
                     Section(header: Text("Medicine Library").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
                         // Check if the medicine library is empty
                         
-                        if var medicineLibrary = vm.user?.medicineLibrary {
-                            if medicineLibrary.isEmpty {
-                                Text("Add Medicine Here").foregroundColor(.gray)
-                            } else {
-                                // List each medicine
-                                Text("this is not empty")
-                                ForEach(vm.user?.medicineLibrary ?? [], id: \.id) { medicine in
-                                    HStack {
-                                        Text(medicine.name)
-                                        Spacer()
-                                        Button(action: {
-                                            showReminderView = true
-                                        }, label: {
-                                            Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding()
-                                        })
-                                    }
-                                }.onDelete(perform: deleteMedicine)
-                                    .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
-                            }
+                        if vm.user?.medicineLibrary != nil {
+                            Text("Add Medicine Here").foregroundColor(.gray)
+                        } else {
+                            // List each medicine
+                            Text("this is not empty")
+                            ForEach(vm.user?.medicineLibrary ?? [], id: \.id) { medicine in
+                                HStack {
+                                    Text(medicine.name)
+                                    Spacer()
+                                    Button(action: {
+                                        showReminderView = true
+                                    }, label: {
+                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding()
+                                    })
+                                }
+                            }.onDelete(perform: deleteMedicine)
+                                .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
                         }
                     }
-                    
                 }
                 .listStyle(.plain)
                 
