@@ -38,13 +38,13 @@ class CustomTabBarController: UITabBarController {
 }
 
 struct CustomTabBarView: UIViewControllerRepresentable {
-    @ObservedObject private var vm = ProfileViewModel()
-    @State private var user = User(name: "Sample User", email: "sample@email.com", medicineLibrary: [])
+//    @ObservedObject private var vm = ProfileViewModel()
+//    @State private var user = User(name: "Sample User", email: "sample@email.com", medicineLibrary: [])
 
     func makeUIViewController(context: Context) -> UIViewController {
         let customTabBarController = CustomTabBarController()
 
-        let searchVC = UIHostingController(rootView: SearchView(user: $user))
+        let searchVC = UIHostingController(rootView: SearchView())
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
 
         let profileVC = UIHostingController(rootView: ProfileView())

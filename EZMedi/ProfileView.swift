@@ -10,14 +10,10 @@ import SwiftUI
 struct User_class {
     let uid, email: String
     var username: String
-    var medicineLibrary: [Medicine]
+    var medicineLibrary: [String]
 }
 
-struct Medicine: Identifiable {
-    let id: Int
-    let name: String
-    let details: String
-}
+
 
 class ProfileViewModel: ObservableObject {
     
@@ -44,7 +40,6 @@ class ProfileViewModel: ObservableObject {
             return
         }
         
-        
         FirebaseManager.shared.firestore.collection("users")
             .document(uid).getDocument { (email, error) in
                 if let error = error {
@@ -63,9 +58,9 @@ class ProfileViewModel: ObservableObject {
                 let uid = data["uid"] as? String ?? ""
                 let email = data["email"] as? String ?? ""
                 let user_name = data["username"] as? String ?? ""
-                let medicineLibrary = data["medicineLibrary"] as? [LibraryItem] ?? []
+//                let medicineLibrary = data["medicineLibrary"] as? [LibraryItem] ?? []
 //                let email_short = data["email"]
-                print(medicineLibrary,"this is the lib")
+//                print(medicineLibrary,"this is the lib")
                 
 //                self.user = User_class(uid: uid, email: email.replaceOccurrences(of: "@gmail.com", with: "") ?? "")
                 self.user = User_class(uid: uid, email: email, username: user_name, medicineLibrary: [])
@@ -102,6 +97,7 @@ struct ProfileView: View {
                 // Set the background color for the entire view
                 Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
                 
+                
                 // The List with clear background
                 List {
                     // User Information Section
@@ -114,25 +110,33 @@ struct ProfileView: View {
                     Section(header: Text("Medicine Library").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
                         // Check if the medicine library is empty
                         
-                        if vm.user?.medicineLibrary != nil {
+                        if ((vm.user?.medicineLibrary.isEmpty) != nil){
                             Text("Add Medicine Here").foregroundColor(.gray)
+//                            Text("Add Medicine Here \(vm.user?.medicineLibrary.isEmpty)")
                         } else {
                             // List each medicine
                             Text("this is not empty")
-                            ForEach(vm.user?.medicineLibrary ?? [], id: \.id) { medicine in
-                                HStack {
-                                    Text(medicine.name)
-                                    Spacer()
-                                    Button(action: {
-                                        showReminderView = true
-                                    }, label: {
-                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding(.tail)
-                                    })
-                                }
-                            }.onDelete(perform: deleteMedicine)
-                                .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
+                            Text("test name")
+//                            Text("test name \(vm.user?.medicineLibrary ?? ["nothing"])")
+                            ForEach(vm.user?.medicineLibrary ?? [], id: \.self) { medicine_ndc in
+                                Text(medicine_ndc)
+//                                HStack {
+//                                    Text(medicine_ndc)
+//                                    Spacer()
+//                                    Button(action: {
+//                                        showReminderView = true
+//                                    }, label: {
+//                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding()
+//                                    })
+//                                }
+                            }
+                            .navigationTitle("example")
+//                            .onDelete(perform: deleteMedicine)
+                            .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
                         }
+
                     }
+                    
                 }
                 .listStyle(.plain)
                 
@@ -178,7 +182,7 @@ struct ProfileView: View {
 //    }
     private func deleteMedicine(at offsets: IndexSet) {
         // Check if user and medicineLibrary are not nil
-        guard var unwrappedUser = vm.user, !unwrappedUser.medicineLibrary.isEmpty else {
+        guard let unwrappedUser = vm.user, !unwrappedUser.medicineLibrary.isEmpty else {
             return
         }
 
@@ -190,9 +194,9 @@ struct ProfileView: View {
 
 }
 
-
-struct User {
-    var name: String
-    var email: String
-    var medicineLibrary: [Medicine]
-}
+//
+//struct User {
+//    var name: String
+//    var email: String
+//    var medicineLibrary: [Medicine]
+//}

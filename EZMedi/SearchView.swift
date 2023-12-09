@@ -24,11 +24,11 @@ struct SearchView: View {
     @State private var isScannerPresented = false
     @State private var scannedCode: String?
     @State private var isSearchActive = false
-    @Binding var user: User
+//    @Binding var user: User
 
     let medicines = [
-        Medicine(id: 1, name: "Aspirin", details: "Used to reduce pain, fever, or inflammation."),
-        Medicine(id: 2, name: "Ibuprofen", details: "It's used for pain relief and reducing inflammation."),
+        Medicine(id: 1, NDC:"00000000", name: "Aspirin", details: "Used to reduce pain, fever, or inflammation."),
+        Medicine(id: 2, NDC:"11111111", name: "Ibuprofen", details: "It's used for pain relief and reducing inflammation."),
         // Add more medicines
     ]
 
