@@ -36,3 +36,4 @@ struct MedicineDetailView: View {
         .navigationBarTitle(medicine.name, displayMode: .inline)
     }
 }
+

@@ -126,7 +126,7 @@ struct ProfileView: View {
                                     Button(action: {
                                         showReminderView = true
                                     }, label: {
-                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding()
+                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding(.tail)
                                     })
                                 }
                             }.onDelete(perform: deleteMedicine)
