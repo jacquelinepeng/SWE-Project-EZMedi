@@ -29,8 +29,8 @@ struct Medicine: Identifiable {
 struct MedicineDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     let medicine: Medicine
-    
     @ObservedObject private var vm = ProfileViewModel()
+    @State private var showAlert = false
     
     var body: some View {
         ZStack {
@@ -53,6 +53,13 @@ struct MedicineDetailView: View {
             .padding()
         }
         .navigationBarTitle(medicine.name, displayMode: .inline)
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Warning"),
+                message: Text(vm.errorMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
     
     
@@ -72,6 +79,14 @@ struct MedicineDetailView: View {
                     
                     if let existingLibrary = document.data()?["medicineLibrary"] as? [String]{
                         updateLibrary = existingLibrary
+                        
+                        if existingLibrary.contains(medicine_ndc){
+                            DispatchQueue.main.async {
+                                self.vm.errorMessage = "Medicine already exists in library."
+                                self.showAlert = true
+                            }
+                            return
+                        }
                     }
                     
                     updateLibrary.append(medicine_ndc)

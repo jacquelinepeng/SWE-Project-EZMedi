@@ -96,7 +96,6 @@ class ProfileViewModel: ObservableObject {
                 }
         
 //        print("this is function delete`medicine")
-//        print(medicineLibraryArray)
     }
     
     func handleSignOut(){
