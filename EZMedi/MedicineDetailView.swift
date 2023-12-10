@@ -55,13 +55,12 @@ struct MedicineDetailView: View {
         .navigationBarTitle(medicine.name, displayMode: .inline)
         .alert(isPresented: $showAlert) {
             Alert(
-                title: Text("Warning"),
+                title: Text("Error"),
                 message: Text(vm.errorMessage),
                 dismissButton: .default(Text("OK"))
             )
         }
     }
-    
     
     private func storeMedicine(medicine_ndc: String) {
         

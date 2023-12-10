@@ -165,6 +165,7 @@ struct ProfileView: View {
                     }
                     
                 }
+                .onAppear(perform: vm.fetchCurrentUser)
                 .listStyle(.plain)
                 
                 
