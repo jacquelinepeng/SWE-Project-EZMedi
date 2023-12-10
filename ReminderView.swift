@@ -60,7 +60,7 @@ struct ReminderView: View {
                     }
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("Reminder")
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(PlainListStyle())
             .background(Color(hex: "#E7EDEB"))

@@ -27,7 +27,7 @@ struct LoginPage: View {
                     .foregroundColor(Color(hex:"2D9596"))
                     .padding(.bottom, 50)
                 
-                TextField("Username", text: $email)
+                TextField("Email address", text: $email)
                     .padding()
                     .background(Color(.secondarySystemBackground))
                     .cornerRadius(5.0)
@@ -77,6 +77,7 @@ struct LoginPage: View {
         }
     }
     
+    
     private func handleAction(){
         print("Login")
         loginUser()
@@ -88,8 +89,9 @@ struct LoginPage: View {
         FirebaseManager.shared.auth.signIn(withEmail: email, password: password){
             result, err in
             if let err = err {
-                print("Failed to login:", err)
-                self.LoginStatusMessage = "Failed to login: \(err)"
+                self.LoginStatusMessage = errorMessage(err)
+//                print("Firebase error code:", (err as NSError).code)
+
                 return
             }
             print("successfully login as user: \(result?.user.uid ?? "")")
@@ -101,6 +103,27 @@ struct LoginPage: View {
     }
 }
 
+private func errorMessage(_ error: Error) -> String {
+    let errorCode = (error as NSError).code
+    switch errorCode {
+    case AuthErrorCode.invalidEmail.rawValue:
+        return "Invalid email address."
+    case AuthErrorCode.emailAlreadyInUse.rawValue:
+        return "This email is already in use."
+    case AuthErrorCode.wrongPassword.rawValue:
+        return "Incorrect password."
+    case AuthErrorCode.userNotFound.rawValue:
+        return "User does not exist."
+    case AuthErrorCode.missingEmail.rawValue:
+        return "No user record found for the given email."
+    case AuthErrorCode.tooManyRequests.rawValue:
+        return "Attempted too many times, please try later."
+    case AuthErrorCode.weakPassword.rawValue:
+        return "Passwork too weak."
+    default:
+        return "An unexpected error occurred."
+    }
+}
 
 struct RegisterPage: View {
     // Registration view content goes here
@@ -116,7 +139,7 @@ struct RegisterPage: View {
                 .foregroundColor(Color(hex:"2D9596"))
                 .padding(.bottom, 50)
             
-            TextField("User name", text: $username)
+            TextField("Username", text: $username)
                 .padding()
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(5.0)
@@ -164,17 +187,18 @@ struct RegisterPage: View {
     
     @State var LoginStatusMessage = ""
     
-    private func createNewAccount(){
+    private func createNewAccount (){
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password){
             result, err in
-            if let err = err{
+            if let err = err {
                 print("Failed to create user!", err)
-                self.LoginStatusMessage = "Failed to create user!: \(err)"
+                self.LoginStatusMessage = errorMessage(err)
+//                self.LoginStatusMessage =  "Failed to create user!: \(err)"
                 return
             }
             
-            print("Successfully created user: \(result?.user.uid ?? "")")
-            self.LoginStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
+//            print("Account created successfully")
+            self.LoginStatusMessage = "Account created successfully"
             self.storeUserInformation()
         }
     }

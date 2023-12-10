@@ -158,7 +158,7 @@ struct ProfileView: View {
                                 }
                             }
                             .onDelete(perform: vm.deleteMedicine)
-                            .navigationTitle("example")
+                            .navigationTitle("Profile")
                             .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
                         }
                         
