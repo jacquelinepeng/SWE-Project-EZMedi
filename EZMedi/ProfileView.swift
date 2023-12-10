@@ -58,17 +58,28 @@ class ProfileViewModel: ObservableObject {
                 let uid = data["uid"] as? String ?? ""
                 let email = data["email"] as? String ?? ""
                 let user_name = data["username"] as? String ?? ""
-//                let medicineLibrary = data["medicineLibrary"] as? [LibraryItem] ?? []
+                let medicineLibrary = data["medicineLibrary"] as? [String] ?? []
 //                let email_short = data["email"]
-//                print(medicineLibrary,"this is the lib")
+                print(medicineLibrary,"this is the lib")
                 
 //                self.user = User_class(uid: uid, email: email.replaceOccurrences(of: "@gmail.com", with: "") ?? "")
-                self.user = User_class(uid: uid, email: email, username: user_name, medicineLibrary: [])
+                self.user = User_class(uid: uid, email: email, username: user_name, medicineLibrary: medicineLibrary)
                 print(self.user ?? ["none"])
 
 //                self.errorMessage = user.uid
         }
         
+    }
+    
+    func deleteMedicine(at offsets: IndexSet) {
+        // Check if user and medicineLibrary are not nil
+        
+        var medicineLibraryArray = self.user?.medicineLibrary ?? []
+        
+        // Remove items at specified offsets
+        medicineLibraryArray.remove(atOffsets: offsets)
+        print("this is function delete`medicine")
+        print(medicineLibraryArray)
     }
     
     func handleSignOut(){
@@ -108,33 +119,33 @@ struct ProfileView: View {
                     
                     // Medicine Library Section
                     Section(header: Text("Medicine Library").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
-                        // Check if the medicine library is empty
+                        var medicineLibraryArray = vm.user?.medicineLibrary ?? []
                         
-                        if ((vm.user?.medicineLibrary.isEmpty) != nil){
+                        if (medicineLibraryArray.isEmpty){
                             Text("Add Medicine Here").foregroundColor(.gray)
-//                            Text("Add Medicine Here \(vm.user?.medicineLibrary.isEmpty)")
+                            //                            Text("Add Medicine Here \(vm.user?.medicineLibrary.isEmpty)")
                         } else {
                             // List each medicine
-                            Text("this is not empty")
-                            Text("test name")
-//                            Text("test name \(vm.user?.medicineLibrary ?? ["nothing"])")
-                            ForEach(vm.user?.medicineLibrary ?? [], id: \.self) { medicine_ndc in
-                                Text(medicine_ndc)
-//                                HStack {
-//                                    Text(medicine_ndc)
-//                                    Spacer()
-//                                    Button(action: {
-//                                        showReminderView = true
-//                                    }, label: {
-//                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding()
-//                                    })
-//                                }
+//                            let medicineLibraryArray = vm.user?.medicineLibrary ?? ["nothing"]
+//                            Text("this is not empty")
+                            //                            Text("test name \(vm.user?.medicineLibrary ?? ["nothing"])")
+                            ForEach(medicineLibraryArray, id: \.self) { medicine_ndc in
+                                
+                                HStack {
+                                    Text(medicine_ndc)
+                                    Spacer()
+                                    Button(action: {
+                                        showReminderView = true
+                                    }, label: {
+                                        Text("Set Reminder").foregroundColor(Color(hex: "2D9596")).padding(.trailing)
+                                    })
+                                }
                             }
+                            .onDelete(perform: vm.deleteMedicine)
                             .navigationTitle("example")
-//                            .onDelete(perform: deleteMedicine)
                             .background(NavigationLink("", destination: ReminderView(), isActive: $showReminderView))
                         }
-
+                        
                     }
                     
                 }
@@ -146,26 +157,26 @@ struct ProfileView: View {
             .navigationBarTitle("Profile", displayMode: .large)
             
             .navigationBarItems(trailing:
-                                Button{
-                                    shouldShowLogOutOptions.toggle()
-                                } label: {
-                                    Image(systemName: "gear")
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                        .padding()
-                                        .frame(width: 40, height: 40)
-                                        .background(Color(hex:"2D9596"))
-                                        .cornerRadius(25.0)
-                                    }
-                            )
+                                    Button{
+                shouldShowLogOutOptions.toggle()
+            } label: {
+                Image(systemName: "gear")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 40, height: 40)
+                    .background(Color(hex:"2D9596"))
+                    .cornerRadius(25.0)
+            }
+            )
             .actionSheet(isPresented: $shouldShowLogOutOptions){
                 .init(title: Text("Settings"), message: Text("What do you want to do?"),
                       buttons: [ .destructive(Text("Sign out"), action:{
-                        print("Handle sign out")
-                        vm.handleSignOut()
-                    }),
-                    .cancel()
-                ])
+                    print("Handle sign out")
+                    vm.handleSignOut()
+                }),
+                                 .cancel()
+                               ])
             }
             .fullScreenCover(isPresented: $vm.isUserCurrentlyLoggedOut, onDismiss:nil){
                 LoginPage(didCompleteLoginProcess: {
@@ -175,22 +186,12 @@ struct ProfileView: View {
             }
         }
     }
-    
-    
+//
+//    
 //    private func deleteMedicine(at offsets: IndexSet) {
 //        user.medicineLibrary.remove(atOffsets: offsets)
 //    }
-    private func deleteMedicine(at offsets: IndexSet) {
-        // Check if user and medicineLibrary are not nil
-        guard let unwrappedUser = vm.user, !unwrappedUser.medicineLibrary.isEmpty else {
-            return
-        }
-
-        // Remove items at specified offsets
-        vm.user?.medicineLibrary.remove(atOffsets: offsets)
-        print(vm.user?.medicineLibrary ?? [])
-
-    }
+//    
 
 }
 
