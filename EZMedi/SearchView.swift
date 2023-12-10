@@ -27,10 +27,9 @@ struct SearchView: View {
 //    @Binding var user: User
 
     let medicines = [
-        Medicine(id: 1, NDC:"00000000", name: "Aspirin", details: "Used to reduce pain, fever, or inflammation."),
-        Medicine(id: 2, NDC:"11111111", name: "Ibuprofen", details: "It's used for pain relief and reducing inflammation."),
-        // Add more medicines
-    ]
+            Medicine(id: 1, NDC:"0363-0587-14", name: "Aspirin", details: "Used to reduce pain, fever, or inflammation."),
+            Medicine(id: 2, NDC:"0904-5853-40", name: "Ibuprofen", details: "It's used for pain relief and reducing inflammation."),
+        ]
 
     var filteredMedicines: [Medicine] {
         if searchText.isEmpty {
