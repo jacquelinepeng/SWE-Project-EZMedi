@@ -21,11 +21,11 @@ struct ReminderView: View {
             //background color
             Color(hex:"E7EDEB").ignoresSafeArea()
             List {
-                Section(header: Text("Medicine Detail")) {
+                Section(header: Text("Medicine Detail").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
                     Text("PLACEHOLDER FOR MEDICINE DETAIL")
                 }
                 
-                Section(header: Text("Daily Reminder")) {
+                Section(header: Text("Daily Reminder").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
                     
                     Toggle("Medicine Reminder", isOn: $isOn)
                         .onChange(of: isOn) { isOn in
