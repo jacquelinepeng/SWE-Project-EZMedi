@@ -65,12 +65,12 @@ struct MedicineDetailView: View {
         FirebaseManager.shared.firestore.collection("users").document(uid)
             .getDocument { document, error in
                 if let error = error {
-                    print("Sorry, cannot get document!")
+                    print("\(error)")
                 } else if let document = document, document.exists{
                     
                     var updateLibrary: [String] = []
                     
-                    if var existingLibrary = document.data()?["medicineLibrary"] as? [String]{
+                    if let existingLibrary = document.data()?["medicineLibrary"] as? [String]{
                         updateLibrary = existingLibrary
                     }
                     

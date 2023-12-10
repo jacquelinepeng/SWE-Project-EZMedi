@@ -36,7 +36,7 @@ class ProfileViewModel: ObservableObject {
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid
         else{
-            self.errorMessage = "Cound't find user!"
+            self.errorMessage = "User does not exist."
             return
         }
         
@@ -73,13 +73,30 @@ class ProfileViewModel: ObservableObject {
     
     func deleteMedicine(at offsets: IndexSet) {
         // Check if user and medicineLibrary are not nil
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            self.errorMessage = "User not found"
+            return
+        }
         
         var medicineLibraryArray = self.user?.medicineLibrary ?? []
         
         // Remove items at specified offsets
         medicineLibraryArray.remove(atOffsets: offsets)
-        print("this is function delete`medicine")
-        print(medicineLibraryArray)
+        
+        FirebaseManager.shared.firestore.collection("users").document(uid)
+                .updateData(["medicineLibrary": medicineLibraryArray]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                        self.errorMessage = "Error updating document: \(err)"
+                    } else {
+                        print("Library successfully updated")
+                        // Update the local user data
+                        self.user?.medicineLibrary = medicineLibraryArray
+                    }
+                }
+        
+//        print("this is function delete`medicine")
+//        print(medicineLibraryArray)
     }
     
     func handleSignOut(){
@@ -119,7 +136,7 @@ struct ProfileView: View {
                     
                     // Medicine Library Section
                     Section(header: Text("Medicine Library").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
-                        var medicineLibraryArray = vm.user?.medicineLibrary ?? []
+                        let medicineLibraryArray = vm.user?.medicineLibrary ?? []
                         
                         if (medicineLibraryArray.isEmpty){
                             Text("Add Medicine Here").foregroundColor(.gray)
