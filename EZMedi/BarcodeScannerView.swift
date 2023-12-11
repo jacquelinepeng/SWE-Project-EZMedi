@@ -67,7 +67,6 @@ struct BarcodeScannerView: UIViewControllerRepresentable {
 
         return viewController
     }
-
-
+    
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }

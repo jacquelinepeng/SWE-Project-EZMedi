@@ -14,7 +14,6 @@ struct ReminderView: View {
     @AppStorage("isOn") var isOn = false
     // Save the notification time set by user for daily reminder
     @AppStorage("notificationTimeString") var notificationTimeString = ""
-    @State private var description = ""
     @ObservedObject private var vm = ProfileViewModel()
     
     var parameter: String?  //Parameter is the ndccode from the profileview pass into the reminderview
@@ -48,19 +47,19 @@ struct ReminderView: View {
             //background color
             Color(hex:"E7EDEB").ignoresSafeArea()
             List {
-                Section(header: Text("Medicine Detail")) {
-                    Text("\(parameter ?? "")")
-     
+                Section(header: Text("Medicine Detail").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
                     if let medicine = medicines.first(where: { $0.NDC == parameter}){
-                        Text("\(medicine.name)")
+                        Text("Medicine name: \(medicine.name)")
                     }
+
                     if let medicine = medicines.first(where: { $0.NDC == parameter}){
-                        Text("\(medicine.details)")
+                        Text("Description: \(medicine.details)")
                     }
                     
+                    Text("NDC code: \(parameter ?? "")")
                 }
                 
-                Section(header: Text("Daily Reminder")) {
+                Section(header: Text("Daily Reminder").font(.headline).foregroundColor(Color(hex:"2D9596"))) {
                     
                     Toggle("Medicine Reminder", isOn: $isOn)
                         .onChange(of: isOn) { isOn in
@@ -68,15 +67,6 @@ struct ReminderView: View {
                         }
                     // Show the date picker
                     if isOn {
-                        ZStack(alignment: .topLeading) {
-                            TextEditor(text: $description)
-                            
-                            if description.isEmpty {
-                                Text("Short description of the medicine")
-                                    .foregroundColor(.gray)
-                                    .padding(.top, 8)
-                            }
-                        }
                         DatePicker("", selection: Binding(
                             get: {
                                 // Get the notification time schedule set by user
@@ -95,7 +85,7 @@ struct ReminderView: View {
                     }
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("Reminder")
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(PlainListStyle())
             .background(Color(hex: "#E7EDEB"))
@@ -109,7 +99,10 @@ private extension ReminderView {
     private func handleIsOnChange(isOn: Bool) {
         if isOn {
             NotificationManager.requestNotificationAuthorization()
-            NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString, description: description)
+            if let medicine = medicines.first(where: { $0.NDC == parameter }) {
+                NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString, medicineName: medicine.name)
+            }
+//            NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString)
         } else {
             NotificationManager.cancelNotification()
         }
@@ -118,7 +111,10 @@ private extension ReminderView {
     private func handleNotificationTimeChange() {
         NotificationManager.cancelNotification()
         NotificationManager.requestNotificationAuthorization()
-        NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString, description: description)
+//        NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString)
+        if let medicine = medicines.first(where: { $0.NDC == parameter }) {
+            NotificationManager.scheduleNotification(notificationTimeString: notificationTimeString, medicineName: medicine.name)
+        }
     }
 }
 
@@ -136,8 +132,7 @@ struct NotificationManager {
     }
     
     // Schedule notification at selected time
-    static func scheduleNotification(notificationTimeString: String, description: String) {
-//        @Binding var description: String
+    static func scheduleNotification(notificationTimeString: String, medicineName: String) {
         
         // Convert from string to date
         guard let date = DateHelper.dateFormatter.date(from: notificationTimeString) else {
@@ -147,9 +142,7 @@ struct NotificationManager {
         // Instantiate a variable for UNMutableNotificationContent
         let content = UNMutableNotificationContent()
         // Notification title
-        content.title = "Take your medicine. NOW."
-        // Notification body
-        content.body = description
+        content.title = "Take your \(medicineName). NOW."
         content.sound = .default
         
         // Set the notification to repeat daily for the specified hour and minute

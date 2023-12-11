@@ -22,8 +22,14 @@ struct SearchBar: View {
 struct SearchView: View {
     @State private var searchText = ""
     @State private var isScannerPresented = false
-    @State private var scannedCode: String?
     @State private var isSearchActive = false
+    
+    @State private var scannedCode: String?
+    @State private var showMedicineDetail = false
+    @State private var selectedMedicine: Medicine?
+    @State private var showError = false
+    @State private var navigateToDetail = false
+
 //    @Binding var user: User
 
     public let medicines = [
@@ -50,7 +56,7 @@ struct SearchView: View {
         Medicine(id: 20, NDC: "0555-0066-02", name: "Isoniazid", details: "Antituberculosis medication, used for treating tuberculosis.")
         
     ]
-
+    
     var filteredMedicines: [Medicine] {
         if searchText.isEmpty {
             return medicines
@@ -63,7 +69,11 @@ struct SearchView: View {
         NavigationView {
             ZStack {
                 Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
-
+                
+                NavigationLink(destination: MedicineDetailView(medicine: selectedMedicine ?? Medicine(id: 0, NDC: "", name: "", details: "")),
+                               isActive: $navigateToDetail) {
+                    EmptyView()
+                }.hidden()
                 
                 VStack {
                     Spacer()
@@ -110,13 +120,28 @@ struct SearchView: View {
                                 .foregroundColor(Color(hex: "#2D9596"))
                         }
                         .sheet(isPresented: $isScannerPresented) {
-                            BarcodeScannerView(isPresented: $isScannerPresented, scannedCode: $scannedCode)
+                            BarcodeScannerView(isPresented: $isScannerPresented, scannedCode: $scannedCode).onDisappear{self.scannedCode = nil}
                         }
-
-                        if let scannedCode = scannedCode {
-                            Text("Scanned: \(scannedCode)")
-                                .padding(.top)
-                                .foregroundColor(Color(hex: "#2D9596"))
+                        
+                        .onChange(of: scannedCode) { newValue in
+                            if let code = newValue {
+                                if let medicine = medicines.first(where: { $0.NDC == code }) {
+                                    self.selectedMedicine = medicine
+                                    self.navigateToDetail = true
+                                    self.scannedCode = nil
+                                }
+                                else {
+                                    self.showError = true
+                                }
+                            }
+                        }
+                        .sheet(isPresented: $showMedicineDetail) {
+                            if let medicine = selectedMedicine {
+                                MedicineDetailView(medicine: medicine)
+                            }
+                        }
+                        .alert(isPresented: $showError) {
+                            Alert(title: Text("Error"), message: Text("Scanned code not found"), dismissButton: .default(Text("OK")))
                         }
 
                         Spacer()
