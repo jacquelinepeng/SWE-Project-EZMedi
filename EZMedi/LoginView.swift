@@ -119,7 +119,9 @@ private func errorMessage(_ error: Error) -> String {
     case AuthErrorCode.tooManyRequests.rawValue:
         return "Attempted too many times, please try later."
     case AuthErrorCode.weakPassword.rawValue:
-        return "Passwork too weak."
+        return "Password too weak."
+    case AuthErrorCode.wrongPassword.rawValue:
+        return "Incorrect password."
     default:
         return "An unexpected error occurred."
     }

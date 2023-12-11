@@ -31,19 +31,21 @@ struct MedicineDetailView: View {
     let medicine: Medicine
     @ObservedObject private var vm = ProfileViewModel()
     @State private var showAlert = false
-    
+//    @State private var isLoggedIn = false
+
     var body: some View {
         ZStack {
             Color(hex: "#E7EDEB").edgesIgnoringSafeArea(.all)
             
             VStack {
                 Text(medicine.details).foregroundColor(Color(hex: "2D9596"))
-                
                 Button("Add to My Library") {
-                    storeMedicine(medicine_ndc: medicine.NDC)
-                    //                    vm.user?.medicineLibrary.append(medicine)
-                    //                    print(vm.user ?? ["test"])
-                    print("this is test")
+                    if FirebaseManager.shared.isUserLoggedIn() {
+                        storeMedicine(medicine_ndc: medicine.NDC)
+                    } else {
+                        showAlert = true
+                        vm.errorMessage = "You need to log in to add medicines to your library."
+                    }
                 }
                 .padding()
                 .background(Color(hex: "2D9596"))
@@ -51,17 +53,17 @@ struct MedicineDetailView: View {
                 .cornerRadius(8)
             }
             .padding()
-        }
-        .navigationBarTitle(medicine.name, displayMode: .inline)
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Error"),
-                message: Text(vm.errorMessage),
-                dismissButton: .default(Text("OK"))
-            )
+            
+            .navigationBarTitle(medicine.name, displayMode: .inline)
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Warning"),
+                    message: Text(vm.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
-    
     private func storeMedicine(medicine_ndc: String) {
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else{
@@ -85,6 +87,9 @@ struct MedicineDetailView: View {
                                 self.showAlert = true
                             }
                             return
+                        } else {
+                            self.vm.errorMessage = "You have successfully update your medicine library."
+                            self.showAlert = true
                         }
                     }
                     

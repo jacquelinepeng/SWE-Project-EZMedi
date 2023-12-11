@@ -22,4 +22,8 @@ class FirebaseManager: NSObject{
         
         super.init()
     }
+    
+    func isUserLoggedIn() -> Bool {
+        return auth.currentUser != nil
+    }
 }
