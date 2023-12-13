@@ -73,7 +73,7 @@ Budget Risks: Being over budget and falling short on revenue. This can be mitiga
 **Approach:**\
 The project will adopt the waterfall approach for system development, following the structure of gathering requirements, design, development, testing, deployment, and maintenance over a specific timeline. The waterfall approach enables the project team to execute the development process within a minimal timeframe, as it has clear deadlines at each phase, reducing the likelihood of conducting iterative revisions that can extend project timelines.
 
-**Project Team:** 
+**Project Team:**\
 Jacqueline Peng, jp5982\
 Zhuotong Xie, zx1370\
 Feiluan Feng, ff2171\
